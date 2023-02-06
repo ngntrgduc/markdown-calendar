@@ -4,19 +4,16 @@ import argparse
 
 def get_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--year',
-                        '-y',
+    parser.add_argument('--year', '-y',
                         type=int, default=datetime.today().year,
                         help='Choose the year. Default is the current year.')
-    parser.add_argument('--month',
-                        '-m',
+    parser.add_argument('--month', '-m',
                         type=int, default=datetime.today().month,
                         help='Choose the month. Default is the current month.') 
-    parser.add_argument('--genyear',
+    parser.add_argument('--whole_year', '-w',
                         action='store_true', default=False,
-                        help='Generate the whole year') 
-    args = parser.parse_args()
-    return args
+                        help='Generate the whole year.') 
+    return parser.parse_args()
 
 def generate_month(year, month):
     week = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -42,7 +39,7 @@ def generate_whole_year(year):
 args = get_args()
 year = args.year
 month = args.month
-if args.genyear:
+if args.whole_year:
     generate_whole_year(year)
 else:
     print_calendar(args.year, args.month)
