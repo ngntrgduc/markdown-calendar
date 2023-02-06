@@ -39,6 +39,10 @@ def generate_whole_year(year):
 args = get_args()
 year = args.year
 month = args.month
+
+assert 1 <= year <= 9999, '[Invalid year] year should between 1 and 9999'
+assert 1 <= month <= 12, '[Invalid month] month should between 1 and 12'
+
 if args.whole_year:
     generate_whole_year(year)
 else:
